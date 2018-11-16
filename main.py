@@ -32,7 +32,7 @@ def get_event_info(event):
            "type": type_event,
            "date_location": date_location}
 
-def generate_markdown_entry(entry):
+def generate_markdown_entry(element):
     document = ""
     document += "## " + "[" + element["title"] + "]" + "(" + element["url"] + ")" + "\n"
     document += "**" + element["type"] + " | " + element["date_location"] + "**\n"
