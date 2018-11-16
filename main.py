@@ -70,3 +70,9 @@ for day in {e["date_location"][8:11] for e in entries}:
 for day in conference_book:
     with codecs.open("conference_book_{}.md".format(day), "wb", "utf-8") as f:
         f.write(conference_book[day])
+
+# Build the complete markdown document
+documents = list(map(generate_markdown_entry, entries))
+conference_book_complete = "\r\n\r\n_________________\r\n\r\n".join(documents)
+with codecs.open("conference_book_complete.md".format(day), "wb", "utf-8") as f:
+    f.write(conference_book_complete)
