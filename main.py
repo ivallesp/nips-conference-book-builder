@@ -34,9 +34,9 @@ def get_event_info(event):
 
 def generate_markdown_entry(element):
     document = ""
-    document += "## " + "[" + element["title"] + "]" + "(" + element["url"] + ")" + "\r\n"
-    document += "**" + element["type"] + " | " + element["date_location"] + "**\r\n"
-    document += "*" + element["authors"] + "*\r\n"
+    document += "## " + "[" + element["title"] + "]" + "(" + element["url"] + ")" + " \r\n"
+    document += "__" + element["type"] + " | " + element["date_location"] + "__ \r\n"
+    document += "_" + element["authors"] + "_ \r\n"
     document += element["abstract"]
     return document
 
