@@ -57,9 +57,16 @@ for event in tqdm(events):
 with codecs.open("entries.json", "wb", "utf-8") as f:
     f.write("\n".join(map(lambda x: json.dumps(x), entries)))        
     
-# Build the markdown document
+# Build the markdown document by day
 documents = list(map(generate_markdown_entry, entries))
-conference_book = "\n\n_________________\n_n".join(documents)
-with codecs.open("conference_book.md", "wb", "utf-8") as f:
-    f.write(conference_book)
+conference_book = {}
+for day in {e["date_location"][8:11] for e in entries}:
+    entries_day = filter(lambda x:x["date_location"][8:11]==day, entries)
+    documents = list(map(generate_markdown_entry, entries_day))
+    documents = "\n\n_________________\n_n".join(documents)
 
+    conference_book[day]=documents
+    
+for day in conference_book:
+    with codecs.open("conference_book_{}.md".format(day), "wb", "utf-8") as f:
+        f.write(conference_book[day])
