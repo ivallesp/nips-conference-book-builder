@@ -34,9 +34,9 @@ def get_event_info(event):
 
 def generate_markdown_entry(element):
     document = ""
-    document += "## " + "[" + element["title"] + "]" + "(" + element["url"] + ")" + "\n"
-    document += "**" + element["type"] + " | " + element["date_location"] + "**\n"
-    document += "*" + element["authors"] + "*\n"
+    document += "## " + "[" + element["title"] + "]" + "(" + element["url"] + ")" + "\r\n"
+    document += "**" + element["type"] + " | " + element["date_location"] + "**\r\n"
+    document += "*" + element["authors"] + "*\r\n"
     document += element["abstract"]
     return document
 
@@ -63,7 +63,7 @@ conference_book = {}
 for day in {e["date_location"][8:11] for e in entries}:
     entries_day = filter(lambda x:x["date_location"][8:11]==day, entries)
     documents = list(map(generate_markdown_entry, entries_day))
-    documents = "\n\n_________________\n_n".join(documents)
+    documents = "\r\n\r\n_________________\r\n\r\n".join(documents)
 
     conference_book[day]=documents
     
